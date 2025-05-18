@@ -1,35 +1,3 @@
-<div class="container mt-5">
-
-  <div class="row g-3">
-    <div class="col-6">
-      <input type="text" class="form-control" placeholder="First name" [formControl]="firstName">
-      <div *ngIf="firstName.invalid && (firstName.touched || firstName.dirty)">
-        <p *ngIf="firstName?.errors?.['required']" class="text-danger"> First name is required</p>
-      </div>
-    </div>
-    <div class="col-6">
-      <input type="text" class="form-control" placeholder="Last name" [formControl]="lastName">
-      <div *ngIf="lastName.invalid && (lastName.touched || lastName.dirty)">
-        <p *ngIf="lastName?.errors?.['required']" class="text-danger"> Last name is required</p>
-      </div>
-    </div>
-    <div class="col-6">
-      <input type="text" class="form-control" placeholder="Email" [formControl]="email">
-      <div *ngIf="email.invalid && (email.touched || email.dirty)">
-        <p *ngIf="email?.errors?.['required']" class="text-danger"> Email is required</p>
-        <p *ngIf="email?.errors?.['pattern']" class="text-danger"> Enter Valid Email</p>
-      </div>
-    </div>
-    <div class="col-6">
-      <input type="password" class="form-control" placeholder="password" [formControl]="passWord">
-      <div *ngIf="passWord.invalid && (passWord.touched || passWord.dirty)">
-        <p *ngIf="passWord?.errors?.['required']" class="text-danger"> Email is required</p>
-        <p *ngIf="passWord?.errors?.['pattern']" class="text-danger"> Password should contain at least 6 characters and at least one digit</p>
-      </div>
-    </div>
-    <div class="col-12">
-      <button type="submit" class="btn btn-primary" (click)="onFormSubmit()">Submit</button>
-    </div>
-  </div>
-
+<div>
+  <app-form-controls-and-validations></app-form-controls-and-validations>
 </div>

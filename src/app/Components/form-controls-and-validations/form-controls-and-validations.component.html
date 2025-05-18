@@ -1,0 +1,56 @@
+<div class="container mt-5">
+
+  <div class="row g-3">
+    <div class="col-6">
+      <input type="text" class="form-control" placeholder="First name" [formControl]="firstName">
+      <div *ngIf="firstName.invalid && (firstName.touched || firstName.dirty)">
+        <p *ngIf="firstName?.errors?.['required']" class="text-danger"> First name is required</p>
+      </div>
+    </div>
+    <div class="col-6">
+      <input type="text" class="form-control" placeholder="Last name" [formControl]="lastName">
+      <div *ngIf="lastName.invalid && (lastName.touched || lastName.dirty)">
+        <p *ngIf="lastName?.errors?.['required']" class="text-danger"> Last name is required</p>
+      </div>
+    </div>
+    <div class="col-6">
+      <input type="text" class="form-control" placeholder="Email" [formControl]="email">
+      <div *ngIf="email.invalid && (email.touched || email.dirty)">
+        <p *ngIf="email?.errors?.['required']" class="text-danger"> Email is required</p>
+        <p *ngIf="email?.errors?.['pattern']" class="text-danger"> Enter Valid Email</p>
+      </div>
+    </div>
+    <div class="col-6">
+      <input type="password" class="form-control" placeholder="password" [formControl]="passWord">
+      <div *ngIf="passWord.invalid && (passWord.touched || passWord.dirty)">
+        <p *ngIf="passWord?.errors?.['required']" class="text-danger"> Password is required</p>
+        <p *ngIf="passWord?.errors?.['pattern']" class="text-danger"> Password should contain at least 6 characters and
+          at least one digit</p>
+      </div>
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary" (click)="onFormSubmit()">Submit</button>
+    </div>
+  </div>
+  <div class="row mt-3 justify-content-left">
+    <div class="col-3">
+      <button class="btn btn btn-warning" (click)="setEmail()">Set Default (or) Dynamic Email Address</button>
+    </div>
+    <div class="col-3 d-flex justify-content-center">
+      <button class="btn btn btn-warning" (click)="updateValidations('firstName')">Make First Name As Required</button>
+    </div>
+    <div class="col-3 d-flex justify-content-center">
+      <button class="btn btn btn-warning" (click)="updateValidations('lastName')">Remove Last Name As Required</button>
+    </div>
+  </div>
+  <hr />
+  <div class="row mt-5 g-3">
+    <h5>INR to USD</h5>
+    <div class="col-4">
+      <input type="number" placeholder="Enter indian Rupees" [formControl]="rupeeVal">
+
+      <p class="fs-5" *ngIf="rupeeVal.value">USD Value $ : {{usdVal}}</p>
+    </div>
+  </div>
+
+</div>
