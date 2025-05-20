@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
+import { Subject, take, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-form-controls-and-validations',
@@ -9,7 +10,8 @@ import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
   templateUrl: './form-controls-and-validations.component.html',
   styleUrl: './form-controls-and-validations.component.less',
 })
-export class FormControlsAndValidationsComponent {
+export class FormControlsAndValidationsComponent implements OnInit {
+  private destroy$ = new Subject<void>();
   title = 'Reactive-Forms';
   firstName: FormControl = new FormControl('');
   lastName: FormControl = new FormControl('', [Validators.required]);
@@ -24,10 +26,11 @@ export class FormControlsAndValidationsComponent {
 
   rupeeVal: FormControl = new FormControl();
   usdVal: number = 0;
-  constructor() {
-    this.rupeeVal.valueChanges.subscribe(() => {
+
+  ngOnInit(): void {
+    this.rupeeVal.valueChanges.pipe(takeUntil(this.destroy$)).subscribe(() => {
       if (this.rupeeVal.value) {
-        this.usdVal = this.rupeeVal.value * 85.5;
+        this.usdVal = this.rupeeVal.value * 85.6;
       } else {
         this.usdVal = 0;
       }
@@ -58,5 +61,10 @@ export class FormControlsAndValidationsComponent {
       this.lastName.clearValidators();
       this.lastName.updateValueAndValidity();
     }
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.unsubscribe();
   }
 }
