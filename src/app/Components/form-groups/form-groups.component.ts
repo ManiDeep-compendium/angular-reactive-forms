@@ -17,6 +17,26 @@ import {
 })
 export class FormGroupsComponent implements OnInit {
   sighUpForm!: FormGroup;
+  defaultFromValues:Object = {
+    email: 'manideepg1998@gmail.com',
+    passWord:'',
+    address:'3-114, HYD BHEL-MIG',
+    state:'Telangana',
+    city:'Rangareddy',
+    pinCode:'5000009',
+  }
+
+  defaultFromValues1:Object = {
+    email: 'manideepg1998@gmail.com',
+    passWord:'',
+    address:'3-114, HYD BHEL-MIG',
+    state:'Telangana',
+    city:'Rangareddy',
+    city232:'Rangareddy',
+    pinCode:'5000009',
+    pinCode23121:'5000009',
+
+  }
   constructor(private fb: FormBuilder) {}
   ngOnInit() {
     this.initializeSignUpForm();
@@ -56,7 +76,6 @@ export class FormGroupsComponent implements OnInit {
   }
   onFormSubmit() {
     if (this.sighUpForm.invalid) { this.sighUpForm.markAllAsTouched(); return };
-
     console.log(this.sighUpForm);
     console.log(this.sighUpForm.valid);
     console.log(this.sighUpForm.invalid);
@@ -65,5 +84,16 @@ export class FormGroupsComponent implements OnInit {
 
   getFormControl(formControlName: string) {
     return this.sighUpForm.get(formControlName);
+  }
+
+  setDefaultValues() {
+   /* Setting default value for specific form Control */
+  //  this.sighUpForm.get('email')?.setValue('manideepg1998@gmail.com');
+
+  /* Setting default values for the entire form group */
+    this.sighUpForm.setValue(this.defaultFromValues);
+  }
+  patchValues() {
+    this.sighUpForm.patchValue(this.defaultFromValues1);
   }
 }
