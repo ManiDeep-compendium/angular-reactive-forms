@@ -3,6 +3,7 @@ import { FormControlsAndValidationsComponent } from './Components/form-controls-
 import { FormGroupsComponent } from './Components/form-groups/form-groups.component';
 import { NavBarComponent } from './Components/nav-bar/nav-bar.component';
 import { HomeComponent } from './Components/home/home.component';
+import { FormArraysComponent } from './Components/form-arrays/form-arrays.component';
 
 export const routes: Routes = [
   {
@@ -12,6 +13,10 @@ export const routes: Routes = [
   {
     path: 'form-groups',
     component: FormGroupsComponent,
+  },
+   {
+    path: 'form-arrays',
+    component: FormArraysComponent,
   },
   {
     path:'home',

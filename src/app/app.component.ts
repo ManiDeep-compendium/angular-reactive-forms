@@ -8,7 +8,7 @@ import { NavBarComponent } from './Components/nav-bar/nav-bar.component';
 
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-root'  ,
   standalone: true,
   imports: [RouterOutlet,NavBarComponent,RouterModule],
   templateUrl: './app.component.html',

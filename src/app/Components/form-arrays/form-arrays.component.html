@@ -1,0 +1,32 @@
+<div class="container mt-5">
+  @for(control of Address.controls; let i = $index; track i ){
+  <input type="text" placeholder="{{i}} - AddressControl" [formControl]="getFormControl(i)">
+  <p>{{control.value}}</p>
+  }
+  <br />
+  <button type="button" class="btn btn-danger mt-5" (click)="addFormControl()">Add Form Control</button>
+
+
+  <form class="mt-5" [formGroup]="User" (ngSubmit)="onFormSubmit()">
+    <div class="mb-3">
+      <label class="form-label">User Name</label>
+      <input type="text" class="form-control" placeholder="Enter Name" formControlName="name">
+    </div>
+    <div class="mb-3" formArrayName="skills">
+      <label class="form-label">Skills</label>
+      @for(skill of skills.controls; let i = $index; track i) {
+      <input type="text" class="form-control mb-2" [formControlName]="i" placeholder="Enter Yor Skills">
+      <div>
+        <button type="button" class="btn btn-warning" (click)="removeSkill(i)">Remove  {{ skill.value }} </button>
+      </div>
+      }
+    </div>
+    <button type="button" (click)="addSkill()">Add Skill</button>
+    <br>
+    <button type="submit" class="btn btn-warning">Submit</button>
+    <br>
+    <button type="button" class="btn btn-primary mt-5" (click)="disableformField()">Disable Name Form Field</button>
+  </form>
+
+
+</div>
